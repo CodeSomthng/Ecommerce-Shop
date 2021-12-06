@@ -47,9 +47,9 @@ PreCommit:
     exclude:
       - '**/db/structure.sql'
 
-PostCheckout:
-  ALL:
-    quiet: true
-
-  IndexTags:
-    enabled: true
+#PostCheckout:
+#  ALL:
+#    quiet: true
+#
+#  IndexTags:
+#    enabled: true
