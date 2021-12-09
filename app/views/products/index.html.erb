@@ -1,0 +1,8 @@
+<h1 style="color: #B00100; margin: 0 auto"> Products </h1> <br/>
+<% @product.each do |prod| %>
+  <ul>
+    <li> Name: <%= prod.title %> </li>
+    <li> Description: <%= prod.description %> </li>
+    <li> Price:<%= prod.price %> </li>
+  </ul>
+<% end %>
