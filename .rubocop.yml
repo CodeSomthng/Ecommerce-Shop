@@ -51,7 +51,14 @@ RSpec/MultipleMemoizedHelpers:
 RSpec/LetSetup:
   Enabled: false
 
+RSpec/ExampleLength:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
     - app/api/**/*
+
+
+
+

@@ -1,8 +1,18 @@
 class ProductsController < ApplicationController
   before_action :set_category, only: %i[show update destroy]
 
+  def new
+    page_not_found unless current_user
+
+    @category = Category.find(params[:id])
+  end
+
   def create
-    Product.create(product_params)
+    @category = Category.find(params[:id])
+    @product = @category.products.create(post_params.merge({ user_id: current_user.id }))
+    redirect_to categories_products_path(@category, @product)
+
+    # Product.create(product_params)
   end
 
   # display all elements of model

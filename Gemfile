@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
+gem 'cancancan', '~> 3.3'
 gem 'devise'
 gem 'fasterer'
 gem 'overcommit'
