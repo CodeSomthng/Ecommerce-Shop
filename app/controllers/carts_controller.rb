@@ -11,7 +11,7 @@ class CartsController < ApplicationController
   end
 
   def show
-    # localhost:3000/categories/:id get
+    # /categories/:id get
   end
 
   def update
