@@ -9,9 +9,9 @@ gem 'cancancan', '~> 3.3'
 gem 'devise'
 gem 'fasterer'
 gem 'overcommit'
-gem 'rspec'
-gem 'rubocop', require: false
+gem 'rspec-rails'
 
+gem 'rubocop', require: false
 gem 'rubocop-performance'
 gem 'rubocop-rails'
 gem 'rubocop-rspec'
