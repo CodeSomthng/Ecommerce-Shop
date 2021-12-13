@@ -1,17 +1,14 @@
 class CartsController < ApplicationController
-  before_action :set_category, only: %i[show update destroy]
+  load_and_authorize_resource
+  before_action :set_category, only: %i[update destroy]
 
   def create
     Cart.create(cart_params)
   end
 
-  # display all elements of model
+  # users/1/carts
   def index
     @cart = Cart.all
-  end
-
-  def show
-    # /categories/:id get
   end
 
   def update

@@ -10,6 +10,7 @@ gem 'devise'
 gem 'fasterer'
 gem 'overcommit'
 gem 'rspec-rails'
+gem 'shoulda-matchers'
 
 gem 'rubocop', require: false
 gem 'rubocop-performance'

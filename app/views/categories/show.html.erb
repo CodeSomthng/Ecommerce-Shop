@@ -8,3 +8,8 @@
       <li> <%= product.price %> </li>
     </ul>
 <% end %>
+
+
+<% if can? :update, @category %>
+  <%= link_to "Edit", category_path(@category) %>
+<% end %>

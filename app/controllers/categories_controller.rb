@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show update destroy]
+  before_action :set_category, only: %i[show edit update destroy]
 
   def create
     Category.create(category_params)
@@ -10,7 +10,10 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def edit; end
+
   def show
+    # authorize! :read, @article
     # byebug
     # localhost:3000/categories/:id get
   end

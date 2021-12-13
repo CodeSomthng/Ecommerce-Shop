@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # Adding routes for users
   get 'users/profile', to: 'users#profile'
+  get 'users/profile/edit', to: 'users#profile#edit'
 
+  # resources :users
   resources :carts
   resources :categories do
     resources :products

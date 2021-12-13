@@ -1,4 +1,4 @@
-class Cart < ApplicationRecord
+class Comments < ApplicationRecord
   belongs_to :user
   belongs_to :product
 end
