@@ -37,7 +37,7 @@ RSpec.describe ProductsController, type: :controller do
     end
 
     it 'moderator returns a success response pending' do
-      login moderator_user
+      login moderator
 
       get :show, params: { id: product.id }
 
@@ -61,7 +61,7 @@ RSpec.describe ProductsController, type: :controller do
 
   describe 'POST #create' do
     it 'admin role redirect to another page response pending' do
-      login admin_user
+      login admin
 
       post :create, params: { product: valid_product_params }
 
@@ -72,7 +72,7 @@ RSpec.describe ProductsController, type: :controller do
     end
 
     it 'moderator role page not found pending' do
-      login moderator_user
+      login moderator
 
       post :create, params: { product: valid_product_params }
 
@@ -98,7 +98,7 @@ RSpec.describe ProductsController, type: :controller do
     let(:product) { create(:product) }
 
     it 'admin role redirect to another page response pending' do
-      login admin_user
+      login admin
       product.save
 
       expect(Product.first.title).to eq(product.title)
@@ -113,7 +113,7 @@ RSpec.describe ProductsController, type: :controller do
     end
 
     it 'moderator role page not found pending' do
-      login moderator_user
+      login moderator
       product.save
 
       put :update, params: { id: product.id, product: valid_product_params }
@@ -143,7 +143,7 @@ RSpec.describe ProductsController, type: :controller do
     let(:product) { create(:product) }
 
     it 'admin role redirect to another page response pending' do
-      login admin_user
+      login admin
       product.save
 
       expect(Product.first.title).to eq(product.title)
@@ -156,7 +156,7 @@ RSpec.describe ProductsController, type: :controller do
     end
 
     it 'moderator role page not found pending' do
-      login moderator_user
+      login moderator
       product.save
 
       expect(Product.first.title).to eq(product.title)

@@ -1,0 +1,10 @@
+<h1> Cart </h1>
+
+<div>
+  <% @cart.each do |cart| %>
+    <br/>
+      <td><%= cart.user.name %> |</td>
+      <td><%= cart.product.id %> |</td>
+      <td><%= cart.product.title %></td>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<h1 style="color: #B00100; margin: 0 auto"> Products </h1> <br/>
+<!--<h1> <%#= image_tag @product.image, style: "width: 250px; display: block" %></h1>-->
+<h1> <%= @product.title %></h1>
+<h1> <%= @product.description %></h1>
+<h1> <%= @product.price %></h1>
+<h1> <%= link_to "Delete Product", category_product_path(@category, @product), method: :delete, data: { confirm: "Are you sure?" } %></h1>
+<h1> <%= link_to "Edit Product", edit_category_product_path(@category, @product) %></h1>
+
+
+
+<div style="width:400px; height:auto">
+    <%= image_tag(@product.image, style:"width:100%") if @product.image.attached?%>
+</div>
+

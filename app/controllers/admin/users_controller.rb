@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
+
   def index
-    @user = User.all
+    @user = User.all.limit(10)
   end
 
   def show

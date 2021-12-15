@@ -5,21 +5,15 @@ class CategoriesController < ApplicationController
     Category.create(category_params)
   end
 
-  # display all elements of model
   def index
-    @categories = Category.all
+    @categories = Category.all.limit(10)
   end
 
   def edit; end
 
-  def show
-    # authorize! :read, @article
-    # byebug
-    # localhost:3000/categories/:id get
-  end
+  def show; end
 
   def update
-    # PUT
     @category.update!(category_params)
   end
 
