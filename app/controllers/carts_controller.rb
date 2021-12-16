@@ -21,6 +21,7 @@ class CartsController < ApplicationController
 
   def destroy
     @cart.destroy!
+    redirect_to user_carts_url(current_user)
   end
 
   private

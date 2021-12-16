@@ -1,7 +1,7 @@
 <h1 style="color: #B00100; margin: 0 auto"> Categories </h1> <br/>
 <% @categories.each do |category| %>
   <ul>
-    <%= link_to category.title , category %>
+    <h2><pre> <%= link_to category.title , category %>    <%= link_to "Edit Category" %></pre></h2>
     <%#= link_to category.title , category %>
     <%#= link_to category.title , categories_products_path %>
     <%#= link_to category.title , "/categories/#{}" %>

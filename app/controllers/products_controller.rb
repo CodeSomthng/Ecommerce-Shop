@@ -1,14 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update destroy]
+  load_and_authorize_resource
 
+  before_action :set_product, only: %i[show edit update destroy]
+  before_action :set_category, only: %i[new create show edit update destroy]
   def new
     page_not_found unless current_user
     @product = Product.new
-    @category = Category.find(params[:category_id])
   end
 
   def create
-    @category = Category.find(params[:category_id])
     @product = @category.products.create(product_params.merge({ user_id: current_user.id }))
     redirect_to category_product_path(@category, @product)
   end
@@ -17,23 +17,17 @@ class ProductsController < ApplicationController
     @products = Product.all.limit(10)
   end
 
-  def show
-    @category = Category.find(params[:category_id])
-  end
+  def show; end
 
-  def edit
-    @category = Category.find(params[:category_id])
-  end
+  def edit; end
 
   def update
     # PUT
-    @category = Category.find(params[:category_id])
     @product.update!(product_params)
     redirect_to category_product_path(@category, @product)
   end
 
   def destroy
-    @category = Category.find(params[:category_id])
     @product.destroy!
     redirect_to category_path(@category)
   end
@@ -42,6 +36,10 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_category
+    @category = Category.find(params[:category_id])
   end
 
   def product_params

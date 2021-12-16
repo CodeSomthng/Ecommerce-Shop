@@ -1,0 +1,12 @@
+<%= form_with(model: [ Category.find(params[:category_id]), @product, @product.comments.build ]) do |form| %>
+
+  <div class="field">
+    <%= form.label 'Your comment:' %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

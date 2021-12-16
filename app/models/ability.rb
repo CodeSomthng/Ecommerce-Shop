@@ -2,12 +2,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new
-    if user.admin?
-      can :manage, :all
-    else
-      can %i[read create], :all
-    end
+    # user ||= User.new
+    # if user.admin?
+    #   can :manage, :all
+    # else
+    #   moderator_abilities if user.moderator?
+    #   visitor_abilities if user.visitor?
+    #
+    #   can %i[read create update delete destroy], :all
+    # return unless
   end
 
   private
@@ -23,15 +26,14 @@ class Ability
     can :manage, Category
   end
 
-  def registered_user_abilities
-    visitor_abilities
+  def visitor_abilities
     can :read, Cart
-    can %i[create update delete], Comments
+    can %i[create update delete], Comments, user: user
   end
 
-  def visitor_abilities
+  def guest_abilities
     can :read, Product
     can :read, Category
-    can %i[read update destroy], Cart
+    cannot %i[read update destroy], Cart
   end
 end

@@ -3,12 +3,21 @@
 <h1> <%= @product.title %></h1>
 <h1> <%= @product.description %></h1>
 <h1> <%= @product.price %></h1>
+<div style="width:400px; height:auto">
+  <%= image_tag(@product.image, style:"width:100%") if @product.image.attached?%>
+</div>
 <h1> <%= link_to "Delete Product", category_product_path(@category, @product), method: :delete, data: { confirm: "Are you sure?" } %></h1>
 <h1> <%= link_to "Edit Product", edit_category_product_path(@category, @product) %></h1>
 
+    <% @product.comments.all.each do |comment| %>
+      <ul>
+        <b><i> Comment:  </i></b> <%= comment.title %>
+        <%# byebug %>
+<!--        <p> <%#= link_to "Edit", edit_category_product_comment_path(@category, @product, comment.id) %>-->
+        <p> <%= link_to "Edit", edit_category_product_comment_path(@category, @product, comment.id) %>
+          <%=link_to "Delete", category_product_comment_path(@category, @product, comment.id), method: :delete %></p>
+      </ul>
+    <% end %>
 
-
-<div style="width:400px; height:auto">
-    <%= image_tag(@product.image, style:"width:100%") if @product.image.attached?%>
-</div>
-
+<h1> <%= render "comments/form" %> </h1>
+<!--<h1> <%#= render @product.comments %> </h1>-->
