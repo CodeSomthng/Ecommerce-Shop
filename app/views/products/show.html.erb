@@ -9,7 +9,7 @@
 <h1> <%= link_to "Delete Product", category_product_path(@category, @product), method: :delete, data: { confirm: "Are you sure?" } %></h1>
 <h1> <%= link_to "Edit Product", edit_category_product_path(@category, @product) %></h1>
 
-    <% @product.comments.all.each do |comment| %>
+    <% @product.comments.each do |comment| %>
       <ul>
         <b><i> Comment:  </i></b> <%= comment.title %>
         <%# byebug %>

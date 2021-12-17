@@ -42,14 +42,16 @@
 
       </ul>
       <form class="d-flex">
-        <nav class="navbar navbar-light">
-          <div class="container-fluid">
-            <a class="navbar-brand", href="<%= user_carts_url(current_user)%>">
-              <i class="fas fa-shopping-cart"></i>
-              Shopping Cart
-            </a>
-          </div>
-        </nav>
+        <% if current_user %>
+          <nav class="navbar navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand", href="<%= user_carts_url(current_user)%>">
+                <i class="fas fa-shopping-cart"></i>
+                Shopping Cart
+              </a>
+            </div>
+          </nav>
+        <% end %>
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
