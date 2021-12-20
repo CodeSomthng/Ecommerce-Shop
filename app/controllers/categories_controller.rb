@@ -2,14 +2,18 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource
   before_action :set_category, only: %i[show edit update destroy]
 
-  def new; end
+  def new
+    page_not_found unless current_user
+    @category = Category.new
+  end
 
   def create
     Category.create(category_params)
+    redirect_to categories_path
   end
 
   def index
-    @categories = Category.all.limit(10)
+    @categories = Category.all.limit(10).order(:title)
   end
 
   def edit; end
@@ -23,6 +27,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy!
+    redirect_to categories_path
   end
 
   private

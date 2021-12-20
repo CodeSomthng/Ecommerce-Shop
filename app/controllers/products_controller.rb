@@ -14,7 +14,11 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all.limit(10)
+    if params[:query].present?
+      Product.search(params[:query])
+    else
+      @products = Product.all.limit(10)
+    end
   end
 
   def show; end
@@ -30,6 +34,10 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy!
     redirect_to category_path(@category)
+  end
+
+  def search
+    @search_results = Product.search(params[:query])
   end
 
   private

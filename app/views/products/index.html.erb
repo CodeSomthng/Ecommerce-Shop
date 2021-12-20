@@ -1,0 +1,9 @@
+<h2> Search Products </h2>
+<br/>
+<% @category.products.each do |product|  %>
+  <ul>
+    <li> <%= product.title %> </li>
+<!--    <li> <%#= product.description %> </li>-->
+<!--    <li> <%#= product.price %> </li>-->
+  </ul>
+<% end %>

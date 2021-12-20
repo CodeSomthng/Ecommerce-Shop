@@ -9,6 +9,7 @@ gem 'cancancan', '~> 3.3'
 gem 'devise'
 gem 'fasterer'
 gem 'overcommit'
+gem 'pg_search'
 gem 'rspec-rails'
 gem 'shoulda-matchers'
 

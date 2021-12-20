@@ -2,10 +2,12 @@
 <% @categories.each do |category| %>
   <ul>
     <h2><td> <%= link_to category.title , category %> </td></h2>
-    <h2><td> <%= link_to "New", new_category_path(category) %>
-      <%= link_to "Update", edit_category_path(category) %>
-      <%= link_to "Delete" %></td></h2>
-    <%#= link_to category.title , category %>
+    <% if can? %i[create], Category %>
+      <h2><td> <%= link_to "New", new_category_path(category), :class => "btn btn-secondary" %>
+        <%= link_to "Update", edit_category_path(category), :class => "btn btn-secondary" %>
+        <%= link_to "Delete", category , method: :delete, :class => "btn btn-secondary" %></td></h2>
+    <% end %>
+      <%#= link_to category.title , category %>
     <%#= link_to category.title , categories_products_path %>
     <%#= link_to category.title , "/categories/#{}" %>
   </ul>

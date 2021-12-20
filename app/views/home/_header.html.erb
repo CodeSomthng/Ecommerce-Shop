@@ -41,7 +41,7 @@
         <% end %>
 
       </ul>
-      <form class="d-flex">
+      <div class="d-flex">
         <% if current_user %>
           <nav class="navbar navbar-light">
             <div class="container-fluid">
@@ -52,9 +52,15 @@
             </div>
           </nav>
         <% end %>
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+<!--        <input class="form-control me-2" name="query" id="query" type="search" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-success" type="submit">Search</button>-->
+
+        <%= form_tag products_search_path, method: :get, role: 'search' do %>
+          <%= text_field_tag :query, params[:query] %>
+          <%= submit_tag "Искать", name: nil %>
+        <% end %>
+
+      </div>
     </div>
   </div>
 </nav>

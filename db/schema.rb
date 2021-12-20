@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_16_081753) do
+ActiveRecord::Schema.define(version: 2021_12_20_092537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2021_12_16_081753) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -98,6 +107,7 @@ ActiveRecord::Schema.define(version: 2021_12_16_081753) do
     t.boolean "admin", default: false
     t.boolean "moderator", default: false
     t.boolean "visitor", default: false
+    t.boolean "banned_users", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

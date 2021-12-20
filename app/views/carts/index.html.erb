@@ -5,6 +5,6 @@
     <br/>
       <td><%= cart.user.name %> |</td>
       <td><%= cart.product.id %> |</td>
-      <td><%= cart.product.title %> <%= link_to "Delete product", user_cart_path(current_user, cart.id), method: :delete %></td>
+      <td><%= cart.product.title %> <%= link_to "Delete product", user_cart_path(current_user, cart.id), method: :delete, :class => "btn btn-secondary" %></td>
   <% end %>
 </div>
