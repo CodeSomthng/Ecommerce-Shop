@@ -1,12 +1,16 @@
 <h1 style="color: #B00100; margin: 0 auto"> Categories </h1> <br/>
 <% @categories.each do |category| %>
   <ul>
-    <%= link_to category.title , category %>
-    <%#= link_to category.title , category %>
+    <h2><td> <%= link_to category.title , category %> </td></h2>
+    <% if can? %i[create], Category %>
+      <h2><td> <%= link_to "New", new_category_path(category), :class => "btn btn-secondary" %>
+        <%= link_to "Update", edit_category_path(category), :class => "btn btn-secondary" %>
+        <%= link_to "Delete", category , method: :delete, :class => "btn btn-secondary" %></td></h2>
+    <% end %>
+      <%#= link_to category.title , category %>
     <%#= link_to category.title , categories_products_path %>
     <%#= link_to category.title , "/categories/#{}" %>
   </ul>
-  <ul>
-    <%#= link_to 'Read more detail', topic_post_path(@topic, post), class: "btn btn-secondary" %>
-  </ul>
+
+
 <% end %>

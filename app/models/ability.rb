@@ -1,53 +1,57 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # can :update, Category, Product, user: moderator
-    # visitor_abilities
-    # return unless user.present?
+    # user ||= User.new # Guest user
+    # if user.admin?
+    #   can :manage, :all
+    # else
+    #   moderator_abilities if user.moderator?
+    #   visitor_abilities if user.visitor?
     #
-    # admin_abilities if user.admin?
-    # moderator_abilities if user.moderator?
-    # visitor_abilities if user.visitor?
+    #   can %i[read create update delete destroy], :all
 
-    user ||= User.new
-    if user.admin?
-      can :manage, :all
-    else
-      can :read, :all
-    end
+    guest_abilities
+    return if user.blank?
+
+    banned_abilities(user.id)
+    return if user.banned_users?
+
+    visitor_abilities(user.id)
+    return if user.visitor?
+
+    moderator_abilities(user.id)
+    return unless user.moderator?
+
+    admin_abilities
+    return unless user.admin?
   end
 
   private
 
+  def guest_abilities
+    can :read, [Category, Product, Comment]
+  end
+
+  def visitor_abilities(user_id)
+    can %i[read create update destroy], Cart
+    can :read, [Category, Product, Comment]
+    can :search, Product
+    can %i[read create update destroy], Comment, user_id: user_id
+  end
+
+  def moderator_abilities(user_id)
+    visitor_abilities(user_id)
+    can :manage, Category
+    can :manage, Product
+    can :manage, Comment
+  end
+
+  def banned_abilities(_user_id)
+    guest_abilities
+  end
+
   def admin_abilities
-    moderator_abilities
     can :manage, :all
   end
-
-  def moderator_abilities
-    registered_user_abilities
-    can :manage, Product
-    can :manage, Category
-  end
-
-  def registered_user_abilities
-    visitor_abilities
-    can :read, Cart
-    can %i[create update delete], Comments
-  end
-
-  def visitor_abilities
-    can :read, Product
-    can :read, Category
-    # can :read, Comments
-    can %i[read update destroy], Cart
-  end
-
-  # read: [:index, :show]
-  # create: [:new, :create]
-  # update: [:edit, :update]
-  # destroy: [:destroy]
 end

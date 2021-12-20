@@ -2,14 +2,24 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'home#index'
-  # Adding routes for users
-  get 'users/profile', to: 'users#profile'
-  get 'users/profile/edit', to: 'users#profile#edit'
 
-  # resources :users
-  resources :carts
+  root to: 'home#index'
+  get '/products/search', to: 'products#search'
+
+  namespace :admin do
+    get '/users_list', to: 'users#users_list'
+    put '/user_banning/:id', to: 'users#ban'
+    delete '/user_banning/:id', to: 'users#destroy'
+  end
+
+  resources :users, only: %i[] do
+    get :profile
+    resources :carts
+  end
+
   resources :categories do
-    resources :products
+    resources :products do
+      resources :comments
+    end
   end
 end

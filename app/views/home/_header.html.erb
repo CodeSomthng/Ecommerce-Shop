@@ -16,9 +16,6 @@
           <%= link_to "Categories", categories_path, class:"nav-link" %>
         </li>
 
-
-
-
         <% if user_signed_in? %>
 
           <li class="nav-item">
@@ -26,7 +23,7 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to "My Profile", users_profile_path, class:"nav-link" %>
+            <%= link_to "My Profile", user_profile_path(current_user), class:"nav-link" %>
           </li>
 
           <li class="nav-item">
@@ -43,22 +40,27 @@
           </li>
         <% end %>
 
-
-
       </ul>
-      <form class="d-flex">
-        <nav class="navbar navbar-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost:3000/">
-              <i class="fas fa-shopping-cart"></i>
-<!--              <img src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">-->
-              Shopping Cart
-            </a>
-          </div>
-        </nav>
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div class="d-flex">
+        <% if current_user %>
+          <nav class="navbar navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand", href="<%= user_carts_url(current_user)%>">
+                <i class="fas fa-shopping-cart"></i>
+                Shopping Cart
+              </a>
+            </div>
+          </nav>
+        <% end %>
+<!--        <input class="form-control me-2" name="query" id="query" type="search" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-success" type="submit">Search</button>-->
+
+        <%= form_tag products_search_path, method: :get, role: 'search' do %>
+          <%= text_field_tag :query, params[:query] %>
+          <%= submit_tag "Искать", name: nil %>
+        <% end %>
+
+      </div>
     </div>
   </div>
 </nav>

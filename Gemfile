@@ -6,18 +6,19 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 gem 'cancancan', '~> 3.3'
-gem 'devise'
-gem 'fasterer'
-gem 'overcommit'
-gem 'rspec-rails'
-gem 'shoulda-matchers'
+gem 'devise', '~> 4.8'
+gem 'fasterer', '~> 0.9.0'
+gem 'overcommit', '~> 0.58.0'
+gem 'pg_search', '~> 2.3'
+gem 'rspec-rails', '~> 5.0'
+gem 'shoulda-matchers', '~> 5.0'
 
-gem 'rubocop', require: false
-gem 'rubocop-performance'
-gem 'rubocop-rails'
-gem 'rubocop-rspec'
+gem 'rubocop', '~> 1.23', require: false
+gem 'rubocop-performance', '~> 1.12'
+gem 'rubocop-rails', '~> 2.12'
+gem 'rubocop-rspec', '~> 2.6'
 
-gem 'pg'
+gem 'pg', '~> 1.2'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 
 gem 'jbuilder', '~> 2.7'
