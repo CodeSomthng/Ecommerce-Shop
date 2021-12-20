@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
 
+  before_action :set_category, except: :search
   before_action :set_product, only: %i[show edit update destroy]
-  before_action :set_category, only: %i[new create show edit update destroy]
+
   def new
     page_not_found unless current_user
     @product = Product.new
@@ -43,7 +44,8 @@ class ProductsController < ApplicationController
   private
 
   def set_product
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
+    @product = @category.products.find(params[:id])
   end
 
   def set_category
