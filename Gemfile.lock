@@ -284,24 +284,24 @@ DEPENDENCIES
   byebug
   cancancan (~> 3.3)
   capybara (>= 3.26)
-  devise
-  fasterer
+  devise (~> 4.8)
+  fasterer (~> 0.9.0)
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  overcommit
-  pg
-  pg_search
+  overcommit (~> 0.58.0)
+  pg (~> 1.2)
+  pg_search (~> 2.3)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
-  rspec-rails
-  rubocop
-  rubocop-performance
-  rubocop-rails
-  rubocop-rspec
+  rspec-rails (~> 5.0)
+  rubocop (~> 1.23)
+  rubocop-performance (~> 1.12)
+  rubocop-rails (~> 2.12)
+  rubocop-rspec (~> 2.6)
   sass-rails (>= 6)
   selenium-webdriver
-  shoulda-matchers
+  shoulda-matchers (~> 5.0)
   spring
   turbolinks (~> 5)
   tzinfo-data
