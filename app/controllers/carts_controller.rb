@@ -1,17 +1,17 @@
 class CartsController < ApplicationController
-  before_action :set_category, only: %i[show update destroy]
+  load_and_authorize_resource
+  before_action :set_category, only: %i[update destroy]
+
+  def new; end
 
   def create
     Cart.create(cart_params)
+    redirect_to user_carts_path
   end
 
-  # display all elements of model
+  # users/1/carts
   def index
-    @cart = Cart.all
-  end
-
-  def show
-    # localhost:3000/categories/:id get
+    @cart = Cart.all.limit(10)
   end
 
   def update
@@ -21,6 +21,7 @@ class CartsController < ApplicationController
 
   def destroy
     @cart.destroy!
+    redirect_to user_carts_url(current_user)
   end
 
   private
@@ -30,6 +31,7 @@ class CartsController < ApplicationController
   end
 
   def cart_params
-    params.require(:cart).permit(:title)
+    # {carts: {user_id: <user_id>, product_id: <product_id>)} }
+    params.permit(:user_id, :product_id)
   end
 end

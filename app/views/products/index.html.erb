@@ -1,8 +1,9 @@
-<h1 style="color: #B00100; margin: 0 auto"> Products </h1> <br/>
-<% @product.each do |prod| %>
+<h2> Search Products </h2>
+<br/>
+<% @category.products.each do |product|  %>
   <ul>
-    <li> Name: <%= prod.title %> </li>
-    <li> Description: <%= prod.description %> </li>
-    <li> Price:<%= prod.price %> </li>
+    <li> <%= product.title %> </li>
+<!--    <li> <%#= product.description %> </li>-->
+<!--    <li> <%#= product.price %> </li>-->
   </ul>
 <% end %>

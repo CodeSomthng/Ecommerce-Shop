@@ -1,0 +1,6 @@
+<h3>Результаты поиска по запросу <em><%= params[:query]%></em></h3>
+<% @search_results.each do |result| %>
+  <h4><%= link_to result.title, category_product_path(result.category_id, result.id) %></h4>
+<!--  <div><%#= result.content.html_safe %></div>-->
+  <hr>
+<% end %>

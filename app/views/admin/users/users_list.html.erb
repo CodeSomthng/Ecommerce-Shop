@@ -1,0 +1,10 @@
+<h1> Admin's user list </h1>
+
+<div>
+  <% @users.each do |user| %>
+    </br>
+      <p>Username: <%= user.name %></p>
+      <p><td><%= link_to "Ban", admin_path(user.id), method: :put, :class => "btn btn-secondary" %>
+      <%= link_to "Delete account", admin_path(user.id), method: :delete, :class => "btn btn-secondary" %> </td></p>
+  <% end %>
+</div>

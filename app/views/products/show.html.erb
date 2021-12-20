@@ -1,0 +1,24 @@
+<h1 style="color: #B00100; margin: 0 auto"> Products </h1> <br/>
+<!--<h1> <%#= image_tag @product.image, style: "width: 250px; display: block" %></h1>-->
+<h1> <%= @product.title %></h1>
+<h1> <%= @product.description %></h1>
+<h1> <%= @product.price %></h1>
+<div style="width:400px; height:auto">
+  <%= image_tag(@product.image, style:"width:100%") if @product.image.attached?%>
+</div>
+<% if can? %i[create, update, destroy], Product %>
+  <h1> <%= link_to "Delete Product", category_product_path(@category, @product), method: :delete, data: { confirm: "Are you sure?" }, :class => "btn btn-secondary" %></h1>
+  <h1> <%= link_to "Edit Product", edit_category_product_path(@category, @product), :class => "btn btn-secondary" %></h1>
+<% end %>
+    <% @product.comments.each do |comment| %>
+      <ul>
+        <b><i> Comment:  </i></b> <%= comment.title %>
+        <%# byebug %>
+<!--        <p> <%#= link_to "Edit", edit_category_product_comment_path(@category, @product, comment.id) %>-->
+        <p> <%= link_to "Edit", edit_category_product_comment_path(@category, @product, comment.id), :class => "btn btn-secondary" %>
+          <%=link_to "Delete", category_product_comment_path(@category, @product, comment.id), method: :delete, :class => "btn btn-secondary"  %></p>
+      </ul>
+    <% end %>
+
+<h1> <%= render "comments/form" %> </h1>
+<!--<h1> <%#= render @product.comments %> </h1>-->
