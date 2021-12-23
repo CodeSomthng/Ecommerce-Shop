@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_092537) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 2021_12_20_092537) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "description"
-    t.float "price"
+    t.float "price", null: false
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 2021_12_20_092537) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "name"
     t.text "surname"
-    t.integer "roles_mask"
     t.boolean "admin", default: false
     t.boolean "moderator", default: false
     t.boolean "visitor", default: false
