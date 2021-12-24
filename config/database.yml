@@ -12,7 +12,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: shop_db
+  database: shop_db_test
   host: localhost
   pool: 5
   username: vlad

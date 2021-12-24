@@ -2,29 +2,20 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # user ||= User.new # Guest user
-    # if user.admin?
-    #   can :manage, :all
-    # else
-    #   moderator_abilities if user.moderator?
-    #   visitor_abilities if user.visitor?
+    # guest_abilities
+    # return if user.blank?
     #
-    #   can %i[read create update delete destroy], :all
-
-    guest_abilities
-    return if user.blank?
-
-    banned_abilities(user.id)
-    return if user.banned_users?
-
-    visitor_abilities(user.id)
-    return if user.visitor?
-
-    moderator_abilities(user.id)
-    return unless user.moderator?
-
-    admin_abilities
-    return unless user.admin?
+    # banned_abilities(user.id)
+    # return if user.banned_users?
+    #
+    # visitor_abilities(user.id)
+    # return if user.visitor?
+    #
+    # moderator_abilities(user.id)
+    # return unless user.moderator?
+    #
+    # admin_abilities
+    # return unless user.admin?
   end
 
   private

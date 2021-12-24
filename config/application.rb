@@ -8,5 +8,6 @@ module EcommerceShop
   class Application < Rails::Application
     config.load_defaults 6.1
     config.serve_static_assets = true
+    # config.api_only = true
   end
 end
