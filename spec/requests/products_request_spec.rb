@@ -5,7 +5,7 @@ RSpec.describe 'Categories CRUD', type: :request do
   let(:product) { create(:product, category: category) }
   let(:user) { create(:user) }
   let(:valid_params) do
-    { title: 'Some_Computer1', description: 'Some default_desc', price: 300, user_id: user.id,
+    { title: 'Some_Computer1', description: 'Some default_desc', price: 300,
       category_id: category.id }
   end
   # let(:invalid_params) { { title:  :title } }
