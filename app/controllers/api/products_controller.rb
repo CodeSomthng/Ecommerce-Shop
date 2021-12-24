@@ -1,6 +1,6 @@
 class Api::ProductsController < Api::ApplicationController
   # load_and_authorize_resource
-
+  # comment
   before_action :set_product, only: %i[show update destroy]
 
   # def new
