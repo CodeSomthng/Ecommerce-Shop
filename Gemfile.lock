@@ -83,6 +83,9 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    crono (1.1.2)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -291,6 +294,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 3.3)
   capybara (>= 3.26)
+  crono (~> 1.1)
   devise (~> 4.8)
   factory_bot_rails
   faker

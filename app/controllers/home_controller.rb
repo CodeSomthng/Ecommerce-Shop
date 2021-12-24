@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    CheckOldUsersJob.perform_later 1, 2, 3
+  end
 end

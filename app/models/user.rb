@@ -4,7 +4,7 @@ class User < ApplicationRecord
   ROLES = %i[admin moderator visitor banned].freeze
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
 
   has_many :products, dependent: :destroy
   has_many :comments, dependent: :destroy

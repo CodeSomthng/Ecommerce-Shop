@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_092537) do
+ActiveRecord::Schema.define(version: 2021_12_24_104827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_092537) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 2021_12_20_092537) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title"
     t.string "description"
-    t.float "price", null: false
+    t.float "price"
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -103,10 +103,16 @@ ActiveRecord::Schema.define(version: 2021_12_20_092537) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "name"
     t.text "surname"
+    t.integer "roles_mask"
     t.boolean "admin", default: false
     t.boolean "moderator", default: false
     t.boolean "visitor", default: false
     t.boolean "banned_users", default: false
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

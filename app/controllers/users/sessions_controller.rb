@@ -10,7 +10,13 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   # def create
-  #   super
+  #   if (user = User.authenticate(params[:username], params[:password]))
+  #     # Save the user ID in the session so it can be used in
+  #     # subsequent requests
+  #     session[:current_user_id] = user.id
+  #     user.update_column(:last_sign_in_at, Time.zone.now)
+  #     redirect_to root_url
+  #   end
   # end
 
   # DELETE /resource/sign_out

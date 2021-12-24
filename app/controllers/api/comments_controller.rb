@@ -22,11 +22,6 @@ class Api::CommentsController < Api::ApplicationController
     @product = @category.products.find(params[:product_id])
     @comment = @product.comments.find(params[:id])
     @comment.update!(comment_params)
-
-    # @comment = Comment.find(params[:id])
-    # @category = @comment.product.category_id
-    # @comment.update(comment_params)
-    # redirect_to category_product_path(@category, params[:product_id]) if @comment.update(comment_params)
   end
 
   def destroy
