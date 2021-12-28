@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   def create
     @product = Product.find(params[:product_id])
@@ -14,9 +14,11 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find(params[:id])
-    # @category = Product.find(@comment.product_id).category_id
-    @category = @comment.product.category_id
+    @category = Category.find(params[:category_id])
+    @product = @category.products.find(params[:product_id])
+    @comment = @product.comments.find(params[:id])
+    @comment.update!(comment_params)
+
     redirect_to category_product_path(@category, params[:product_id]) if @comment.update(comment_params)
   end
 

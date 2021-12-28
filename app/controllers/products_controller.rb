@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   before_action :set_category, except: :search
   before_action :set_product, only: %i[show edit update destroy]
@@ -18,7 +18,9 @@ class ProductsController < ApplicationController
     if params[:query].present?
       Product.search(params[:query])
     else
-      @products = Product.all.limit(10)
+      # @products = Product.all.limit(10)
+      @category = Category.find(params[:category_id])
+      @products = @category.products.all.limit(10)
     end
   end
 

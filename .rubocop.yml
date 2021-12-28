@@ -57,6 +57,9 @@ RSpec/LetSetup:
 RSpec/ExampleLength:
   Enabled: false
 
+Metrics/AbcSize:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - config/*

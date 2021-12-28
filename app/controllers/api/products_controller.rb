@@ -1,6 +1,7 @@
 class Api::ProductsController < Api::ApplicationController
   # load_and_authorize_resource
   # comment
+  before_action :set_category, only: %i[show update destroy]
   before_action :set_product, only: %i[show update destroy]
 
   # def new
@@ -18,7 +19,9 @@ class Api::ProductsController < Api::ApplicationController
     if params[:query].present?
       Product.search(params[:query])
     else
-      @products = Product.all.limit(10)
+      # @products = Product.all.limit(10)
+      @category = Category.find(params[:category_id])
+      @products = @category.products.all.limit(10)
     end
   end
 
