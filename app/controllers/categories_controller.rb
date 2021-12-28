@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    Category.create(category_params)
+    Category.create!(category_params)
     redirect_to categories_path
   end
 

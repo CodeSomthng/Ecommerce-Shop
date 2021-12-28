@@ -2,20 +2,20 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # guest_abilities
-    # return if user.blank?
-    #
-    # banned_abilities(user.id)
-    # return if user.banned_users?
-    #
-    # visitor_abilities(user.id)
-    # return if user.visitor?
-    #
-    # moderator_abilities(user.id)
-    # return unless user.moderator?
-    #
-    # admin_abilities
-    # return unless user.admin?
+    guest_abilities
+    return if user.blank?
+
+    banned_abilities(user.id)
+    return if user.banned_users?
+
+    visitor_abilities(user.id)
+    return if user.visitor?
+
+    moderator_abilities(user.id)
+    return unless user.moderator?
+
+    admin_abilities
+    return unless user.admin?
   end
 
   private

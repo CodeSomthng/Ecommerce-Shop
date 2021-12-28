@@ -1,20 +1,19 @@
-
 development:
   adapter: postgresql
-  encoding: unicode
   database: shop_db
+  encoding: unicode
   host: localhost
-  pool: 5
-  username: vlad
   password: secret
+  pool: 5
   timeout: 5000
+  username: vlad
 
 test:
   adapter: postgresql
-  encoding: unicode
   database: shop_db_test
+  encoding: unicode
   host: localhost
-  pool: 5
-  username: vlad
   password: secret
+  pool: 5
   timeout: 5000
+  username: vlad

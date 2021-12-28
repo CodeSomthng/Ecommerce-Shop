@@ -8,7 +8,7 @@ class Api::CategoriesController < Api::ApplicationController
   end
 
   def create
-    Category.create(category_params)
+    Category.create!(category_params)
   end
 
   def index

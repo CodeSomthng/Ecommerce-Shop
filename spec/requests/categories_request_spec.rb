@@ -20,8 +20,8 @@ RSpec.describe 'Categories CRUD', type: :request do
 
     it 'does not create blank category' do
       expect do
-        post api_categories_path(invalid_params), params: { category: invalid_params }, as: :json
-      end.to raise_error(ActiveRecord::NotNullViolation)
+        post api_categories_path, params: { category: invalid_params }, as: :json
+      end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 

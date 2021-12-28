@@ -29,6 +29,9 @@ Style/RedundantFetchBlock:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+Style/OpenStructUse:
+  Enabled: false
+
 Layout/LineLength:
   Max: 120
   Exclude:
@@ -59,6 +62,8 @@ Metrics/BlockLength:
     - config/*
     - spec/**/*
     - app/api/**/*
+
+
 
 
 
